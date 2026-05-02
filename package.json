@@ -1,0 +1,18 @@
+{
+  "name": "leadforge-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Simple outreach generator for foreign trade sales development.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2"
+  }
+}

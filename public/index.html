@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LeadForge AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              ink: "#0f172a",
+              steel: "#334155",
+              line: "#dbe4ef",
+              mist: "#f8fafc",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-mist text-ink transition-colors duration-200 dark:bg-slate-950 dark:text-slate-100">
+    <div class="min-h-screen">
+      <header class="border-b border-line bg-white transition-colors duration-200 dark:border-slate-800 dark:bg-slate-900">
+        <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-4">
+          <div>
+            <h1 class="text-xl font-semibold tracking-tight" data-i18n="appTitle">LeadForge AI</h1>
+            <p class="text-sm text-steel dark:text-slate-400" data-i18n="appSubtitle">Generate export outreach content in one step.</p>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <button
+              id="themeToggle"
+              type="button"
+              class="group inline-flex items-center gap-2 rounded-full border border-line bg-slate-50 px-2 py-1 text-sm font-medium text-steel transition hover:border-slate-300 hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-slate-600 dark:hover:bg-slate-700"
+              aria-label="Toggle theme"
+              aria-pressed="false"
+            >
+              <span class="relative flex h-8 w-14 items-center rounded-full bg-slate-300 p-1 transition group-aria-pressed:bg-slate-700 dark:bg-slate-600 dark:group-aria-pressed:bg-sky-500">
+                <span class="absolute left-1 text-[10px] font-semibold text-white transition group-aria-pressed:opacity-0">
+                  <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <path d="M12 2v2"></path>
+                    <path d="M12 20v2"></path>
+                    <path d="M4.93 4.93l1.41 1.41"></path>
+                    <path d="M17.66 17.66l1.41 1.41"></path>
+                    <path d="M2 12h2"></path>
+                    <path d="M20 12h2"></path>
+                    <path d="M6.34 17.66l-1.41 1.41"></path>
+                    <path d="M19.07 4.93l-1.41 1.41"></path>
+                  </svg>
+                </span>
+                <span class="absolute right-1 text-[10px] font-semibold text-white opacity-0 transition group-aria-pressed:opacity-100">
+                  <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 3a9 9 0 1 0 9 9"></path>
+                    <path d="M21 12a9 9 0 0 1-9-9"></path>
+                  </svg>
+                </span>
+                <span class="flex h-6 w-6 translate-x-0 items-center justify-center rounded-full bg-white text-slate-500 shadow transition group-aria-pressed:translate-x-6 group-aria-pressed:text-slate-800 dark:bg-slate-100">
+                  <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <path d="M12 2v2"></path>
+                    <path d="M12 20v2"></path>
+                    <path d="M4.93 4.93l1.41 1.41"></path>
+                    <path d="M17.66 17.66l1.41 1.41"></path>
+                    <path d="M2 12h2"></path>
+                    <path d="M20 12h2"></path>
+                    <path d="M6.34 17.66l-1.41 1.41"></path>
+                    <path d="M19.07 4.93l-1.41 1.41"></path>
+                  </svg>
+                </span>
+              </span>
+              <span class="pr-1" data-i18n="themeLabel">Theme</span>
+            </button>
+
+            <button
+              id="langToggle"
+              type="button"
+              class="group inline-flex items-center gap-2 rounded-full border border-line bg-slate-50 px-2 py-1 text-sm font-medium text-steel transition hover:border-slate-300 hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-slate-600 dark:hover:bg-slate-700"
+              aria-label="Toggle language"
+            >
+              <span class="flex h-8 w-8 items-center justify-center rounded-full bg-white text-slate-500 shadow transition dark:bg-slate-700 dark:text-slate-200">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M2 12h20"></path>
+                  <path d="M12 2a15.3 15.3 0 0 1 0 20"></path>
+                  <path d="M12 2a15.3 15.3 0 0 0 0 20"></path>
+                </svg>
+              </span>
+              <span id="langLabel" class="pr-1" data-i18n="langButtonLabel">中文</span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <main class="mx-auto grid max-w-7xl gap-6 px-6 py-6 lg:grid-cols-[360px_1fr]">
+        <section class="rounded-lg border border-line bg-white p-5 shadow-sm transition-colors duration-200 dark:border-slate-800 dark:bg-slate-900 dark:shadow-none">
+          <h2 class="text-base font-semibold" data-i18n="inputFormTitle">Input Form</h2>
+          <form id="generator-form" class="mt-4 space-y-4">
+            <div>
+              <label for="prospectName" class="mb-1 block text-sm font-medium" data-i18n="prospectNameLabel">Prospect Name</label>
+              <input
+                id="prospectName"
+                name="prospectName"
+                type="text"
+                placeholder="Mr. Müller"
+                class="w-full rounded-md border border-line bg-white px-3 py-2 text-sm outline-none focus:border-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+              />
+            </div>
+
+            <div>
+              <label for="product" class="mb-1 block text-sm font-medium" data-i18n="productLabel">Product</label>
+              <input
+                id="product"
+                name="product"
+                type="text"
+                required
+                placeholder="BMW auto parts"
+                class="w-full rounded-md border border-line bg-white px-3 py-2 text-sm outline-none focus:border-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+              />
+            </div>
+
+            <div>
+              <label for="country" class="mb-1 block text-sm font-medium" data-i18n="countryLabel">Target Country</label>
+              <input
+                id="country"
+                name="country"
+                type="text"
+                required
+                placeholder="Germany"
+                class="w-full rounded-md border border-line bg-white px-3 py-2 text-sm outline-none focus:border-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+              />
+            </div>
+
+            <div>
+              <label for="customerType" class="mb-1 block text-sm font-medium" data-i18n="customerTypeLabel">Customer Type</label>
+              <select
+                id="customerType"
+                name="customerType"
+                required
+                class="w-full rounded-md border border-line bg-white px-3 py-2 text-sm outline-none focus:border-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+              >
+                <option value="" selected disabled data-i18n="customerTypePlaceholder">Select customer type</option>
+                <option value="wholesaler">Wholesaler</option>
+                <option value="distributor">Distributor</option>
+                <option value="retailer">Retailer</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="companyStrength" class="mb-1 block text-sm font-medium">
+                <span data-i18n="companyStrengthLabel">Company Strength</span>
+                <span class="text-steel dark:text-slate-400" data-i18n="optionalLabel">(optional)</span>
+              </label>
+              <textarea
+                id="companyStrength"
+                name="companyStrength"
+                rows="4"
+                placeholder="20 years export experience in Europe"
+                class="w-full rounded-md border border-line bg-white px-3 py-2 text-sm outline-none focus:border-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+              ></textarea>
+            </div>
+
+            <div>
+              <label for="senderName" class="mb-1 block text-sm font-medium" data-i18n="senderNameLabel">Your Name</label>
+              <input
+                id="senderName"
+                name="senderName"
+                type="text"
+                placeholder="John Smith"
+                class="w-full rounded-md border border-line bg-white px-3 py-2 text-sm outline-none focus:border-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+              />
+            </div>
+
+            <button
+              type="submit"
+              class="inline-flex w-full items-center justify-center rounded-md bg-ink px-4 py-2.5 text-sm font-medium text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-sky-500 dark:hover:bg-sky-400"
+            >
+              <span data-i18n="generateButton">Generate Outreach</span>
+            </button>
+          </form>
+
+          <p id="status" class="mt-3 text-sm text-steel dark:text-slate-400"></p>
+        </section>
+
+        <section class="space-y-4">
+          <div class="rounded-lg border border-line bg-white p-5 shadow-sm transition-colors duration-200 dark:border-slate-800 dark:bg-slate-900 dark:shadow-none">
+            <div class="flex items-center justify-between gap-3">
+              <h2 class="text-base font-semibold" data-i18n="coldEmailTitle">Cold Email</h2>
+            </div>
+            <pre id="coldEmail" class="mt-3 whitespace-pre-wrap text-sm leading-6 text-slate-700 dark:text-slate-300">No content generated yet.</pre>
+            <h3 class="mt-4 text-sm font-semibold text-steel dark:text-slate-300" data-i18n="coldEmailZhTitle">Chinese Version</h3>
+            <pre id="coldEmailZh" class="mt-2 whitespace-pre-wrap text-sm leading-6 text-slate-700 dark:text-slate-300">No content generated yet.</pre>
+          </div>
+
+          <div class="rounded-lg border border-line bg-white p-5 shadow-sm transition-colors duration-200 dark:border-slate-800 dark:bg-slate-900 dark:shadow-none">
+            <h2 class="text-base font-semibold" data-i18n="whatsappTitle">WhatsApp Message</h2>
+            <pre id="whatsappMessage" class="mt-3 whitespace-pre-wrap text-sm leading-6 text-slate-700 dark:text-slate-300">No content generated yet.</pre>
+          </div>
+
+          <div class="rounded-lg border border-line bg-white p-5 shadow-sm transition-colors duration-200 dark:border-slate-800 dark:bg-slate-900 dark:shadow-none">
+            <h2 class="text-base font-semibold" data-i18n="followUpTitle">Follow-up Messages</h2>
+            <div class="mt-3 grid gap-3">
+              <pre id="followUp1" class="whitespace-pre-wrap rounded-md border border-line bg-slate-50 p-3 text-sm leading-6 text-slate-700 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-300">No content generated yet.</pre>
+              <pre id="followUp2" class="whitespace-pre-wrap rounded-md border border-line bg-slate-50 p-3 text-sm leading-6 text-slate-700 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-300">No content generated yet.</pre>
+              <pre id="followUp3" class="whitespace-pre-wrap rounded-md border border-line bg-slate-50 p-3 text-sm leading-6 text-slate-700 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-300">No content generated yet.</pre>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      const form = document.getElementById("generator-form");
+      const statusEl = document.getElementById("status");
+      const submitBtn = form.querySelector("button[type='submit']");
+      const themeToggle = document.getElementById("themeToggle");
+      const langToggle = document.getElementById("langToggle");
+      const langLabel = document.getElementById("langLabel");
+
+      const fields = {
+        coldEmail: document.getElementById("coldEmail"),
+        coldEmailZh: document.getElementById("coldEmailZh"),
+        whatsappMessage: document.getElementById("whatsappMessage"),
+        followUp1: document.getElementById("followUp1"),
+        followUp2: document.getElementById("followUp2"),
+        followUp3: document.getElementById("followUp3"),
+      };
+
+      const translations = {
+        en: {
+          appTitle: "LeadForge AI",
+          appSubtitle: "Generate export outreach content in one step.",
+          themeLabel: "Theme",
+          langButtonLabel: "中文",
+          inputFormTitle: "Input Form",
+          prospectNameLabel: "Prospect Name",
+          productLabel: "Product",
+          countryLabel: "Target Country",
+          customerTypeLabel: "Customer Type",
+          customerTypePlaceholder: "Select customer type",
+          companyStrengthLabel: "Company Strength",
+          senderNameLabel: "Your Name",
+          optionalLabel: "(optional)",
+          generateButton: "Generate Outreach",
+          coldEmailTitle: "Cold Email",
+          coldEmailZhTitle: "Chinese Version",
+          whatsappTitle: "WhatsApp Message",
+          followUpTitle: "Follow-up Messages",
+          prospectNamePlaceholder: "Mr. Müller",
+          productPlaceholder: "BMW auto parts",
+          countryPlaceholder: "Germany",
+          senderNamePlaceholder: "John Smith",
+          statusIdle: "No content generated yet.",
+          statusWorking: "Generating outreach content...",
+          statusDone: "Content generated successfully.",
+          statusErrorPrefix: "",
+          noContent: "No content generated yet.",
+        },
+        zh: {
+          appTitle: "LeadForge AI",
+          appSubtitle: "一键生成外贸开发信内容。",
+          themeLabel: "主题",
+          langButtonLabel: "EN",
+          inputFormTitle: "输入表单",
+          prospectNameLabel: "对方姓名",
+          productLabel: "产品",
+          countryLabel: "目标国家",
+          customerTypeLabel: "客户类型",
+          customerTypePlaceholder: "请选择客户类型",
+          companyStrengthLabel: "公司优势",
+          senderNameLabel: "我的姓名",
+          optionalLabel: "（可选）",
+          generateButton: "生成开发内容",
+          coldEmailTitle: "开发信",
+          coldEmailZhTitle: "中文版本",
+          whatsappTitle: "WhatsApp 文案",
+          followUpTitle: "跟进消息",
+          prospectNamePlaceholder: "Mr. Müller",
+          productPlaceholder: "BMW 汽车配件",
+          countryPlaceholder: "德国",
+          senderNamePlaceholder: "John Smith",
+          statusIdle: "暂无内容。",
+          statusWorking: "正在生成开发内容...",
+          statusDone: "内容生成成功。",
+          statusErrorPrefix: "错误：",
+          noContent: "暂无内容。",
+        },
+      };
+
+      const emptyText = {
+        en: "No content generated yet.",
+        zh: "暂无内容。",
+      };
+
+      let currentLang = localStorage.getItem("leadforge-lang") || "en";
+      let currentTheme = localStorage.getItem("leadforge-theme") || "light";
+
+      function setStatus(message, isError = false) {
+        statusEl.textContent = message;
+        statusEl.className = isError ? "mt-3 text-sm text-red-600 dark:text-red-400" : "mt-3 text-sm text-steel dark:text-slate-400";
+      }
+
+      function applyLanguage(lang) {
+        currentLang = lang;
+        localStorage.setItem("leadforge-lang", lang);
+        document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+        langLabel.textContent = translations[lang].langButtonLabel;
+
+        document.querySelectorAll("[data-i18n]").forEach((node) => {
+          const key = node.getAttribute("data-i18n");
+          const value = translations[lang][key];
+          if (value) {
+            node.textContent = value;
+          }
+        });
+
+        document.getElementById("product").placeholder = translations[lang].productPlaceholder;
+        document.getElementById("country").placeholder = translations[lang].countryPlaceholder;
+        document.getElementById("prospectName").placeholder = translations[lang].prospectNamePlaceholder;
+        document.getElementById("senderName").placeholder = translations[lang].senderNamePlaceholder;
+        document.getElementById("customerType").querySelector("option[value='']").textContent = translations[lang].customerTypePlaceholder;
+
+        if (fields.coldEmail.textContent === emptyText.en || fields.coldEmail.textContent === emptyText.zh) {
+          fields.coldEmail.textContent = emptyText[lang];
+        }
+        if (fields.coldEmailZh.textContent === emptyText.en || fields.coldEmailZh.textContent === emptyText.zh) {
+          fields.coldEmailZh.textContent = emptyText[lang];
+        }
+        if (fields.whatsappMessage.textContent === emptyText.en || fields.whatsappMessage.textContent === emptyText.zh) {
+          fields.whatsappMessage.textContent = emptyText[lang];
+        }
+        [fields.followUp1, fields.followUp2, fields.followUp3].forEach((field) => {
+          if (field.textContent === emptyText.en || field.textContent === emptyText.zh) {
+            field.textContent = emptyText[lang];
+          }
+        });
+
+        if (!statusEl.dataset.locked) {
+          setStatus(translations[lang].statusIdle);
+        }
+      }
+
+      function applyTheme(theme) {
+        currentTheme = theme;
+        localStorage.setItem("leadforge-theme", theme);
+        document.documentElement.classList.toggle("dark", theme === "dark");
+        themeToggle.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
+      }
+
+      function renderResult(data) {
+        fields.coldEmail.textContent = data.cold_email || translations[currentLang].noContent;
+        fields.coldEmailZh.textContent = data.cold_email_zh || translations[currentLang].noContent;
+        fields.whatsappMessage.textContent = data.whatsapp_message || translations[currentLang].noContent;
+        fields.followUp1.textContent = data.follow_up_1 || translations[currentLang].noContent;
+        fields.followUp2.textContent = data.follow_up_2 || translations[currentLang].noContent;
+        fields.followUp3.textContent = data.follow_up_3 || translations[currentLang].noContent;
+      }
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const payload = {
+          prospectName: document.getElementById("prospectName").value.trim(),
+          product: document.getElementById("product").value.trim(),
+          country: document.getElementById("country").value.trim(),
+          customerType: document.getElementById("customerType").value,
+          companyStrength: document.getElementById("companyStrength").value.trim(),
+          senderName: document.getElementById("senderName").value.trim(),
+        };
+
+        submitBtn.disabled = true;
+        statusEl.dataset.locked = "1";
+        setStatus(translations[currentLang].statusWorking);
+
+        try {
+          const response = await fetch("/api/generate", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+
+          const data = await response.json();
+
+          if (!response.ok) {
+            throw new Error(data.error || "Generation failed.");
+          }
+
+          renderResult(data);
+          setStatus(translations[currentLang].statusDone);
+        } catch (error) {
+          setStatus(`${translations[currentLang].statusErrorPrefix}${error.message}`, true);
+        } finally {
+          delete statusEl.dataset.locked;
+          submitBtn.disabled = false;
+        }
+      });
+
+      themeToggle.addEventListener("click", () => {
+        applyTheme(currentTheme === "light" ? "dark" : "light");
+      });
+
+      langToggle.addEventListener("click", () => {
+        applyLanguage(currentLang === "en" ? "zh" : "en");
+      });
+
+      applyTheme(currentTheme);
+      applyLanguage(currentLang);
+    </script>
+  </body>
+</html>
