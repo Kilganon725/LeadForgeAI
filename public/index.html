@@ -34,7 +34,7 @@
           <div class="min-w-0">
             <div class="flex items-center gap-2">
               <h1 class="truncate text-lg font-semibold tracking-tight sm:text-xl" data-i18n="appTitle">LeadForge AI</h1>
-              <span class="inline-flex h-6 items-center rounded-full border border-line bg-slate-50 px-2 text-[11px] font-medium text-slate-500 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400">v1.1.0</span>
+              <span class="inline-flex h-6 items-center rounded-full border border-line bg-slate-50 px-2 text-[11px] font-medium text-slate-500 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400">v1.2.0</span>
             </div>
             <p class="mt-1 max-w-xl text-sm text-muted dark:text-slate-400" data-i18n="appSubtitle">Generate export outreach content in one step.</p>
           </div>
@@ -248,18 +248,47 @@
                   <h2 class="text-base font-semibold tracking-tight" data-i18n="whatsappTitle">WhatsApp Message</h2>
                 </div>
                 <pre id="whatsappMessage" class="mt-4 whitespace-pre-wrap text-sm leading-6 text-slate-700 dark:text-slate-300">No content generated yet.</pre>
+
+                <div class="mt-5 border-t border-line pt-5 dark:border-slate-800">
+                  <div class="flex items-center gap-2">
+                    <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-300">
+                      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M4 4h16v10H7l-3 3V4Z"></path>
+                        <path d="M7 8h10"></path>
+                        <path d="M7 11h6"></path>
+                      </svg>
+                    </span>
+                    <h3 class="text-sm font-semibold text-slate-600 dark:text-slate-300" data-i18n="whatsappZhTitle">Chinese Version</h3>
+                  </div>
+                  <pre id="whatsappMessageZh" class="mt-3 whitespace-pre-wrap text-sm leading-6 text-slate-700 dark:text-slate-300">No content generated yet.</pre>
+                </div>
               </div>
 
               <div class="rounded-2xl border border-line bg-panel p-5 shadow-soft transition-colors duration-200 dark:border-slate-800 dark:bg-slate-900 dark:shadow-none sm:p-6">
-                <div class="flex items-center gap-2">
-                  <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-300">
-                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <path d="M4 6h16"></path>
-                      <path d="M4 12h10"></path>
-                      <path d="M4 18h16"></path>
-                    </svg>
-                  </span>
-                  <h2 class="text-base font-semibold tracking-tight" data-i18n="followUpTitle">Follow-up Messages</h2>
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex items-center gap-2">
+                    <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-300">
+                      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M4 6h16"></path>
+                        <path d="M4 12h10"></path>
+                        <path d="M4 18h16"></path>
+                      </svg>
+                    </span>
+                    <h2 class="text-base font-semibold tracking-tight" data-i18n="followUpTitle">Follow-up Messages</h2>
+                  </div>
+                  <button
+                    id="followUpToggle"
+                    type="button"
+                    class="hidden inline-flex h-9 items-center gap-2 rounded-full border border-line bg-white px-3 text-sm font-medium text-slate-700 shadow-sm transition hover:border-slate-300 hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-200 dark:hover:border-slate-700 dark:hover:bg-slate-800"
+                  >
+                    <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-300">
+                      <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M7 7h10v10"></path>
+                        <path d="M7 17 17 7"></path>
+                      </svg>
+                    </span>
+                    <span id="followUpToggleLabel">看中文</span>
+                  </button>
                 </div>
                 <div class="mt-4 grid gap-3">
                   <pre id="followUp1" class="whitespace-pre-wrap rounded-xl border border-line bg-slate-50 p-3.5 text-sm leading-6 text-slate-700 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-300">No content generated yet.</pre>
@@ -280,6 +309,8 @@
       const themeToggle = document.getElementById("themeToggle");
       const langToggle = document.getElementById("langToggle");
       const langLabel = document.getElementById("langLabel");
+      const followUpToggle = document.getElementById("followUpToggle");
+      const followUpToggleLabel = document.getElementById("followUpToggleLabel");
       const clearHistoryBtn = document.getElementById("clearHistoryBtn");
       const historyList = document.getElementById("historyList");
 
@@ -287,6 +318,7 @@
         coldEmail: document.getElementById("coldEmail"),
         coldEmailZh: document.getElementById("coldEmailZh"),
         whatsappMessage: document.getElementById("whatsappMessage"),
+        whatsappMessageZh: document.getElementById("whatsappMessageZh"),
         followUp1: document.getElementById("followUp1"),
         followUp2: document.getElementById("followUp2"),
         followUp3: document.getElementById("followUp3"),
@@ -317,7 +349,10 @@
           coldEmailTitle: "Cold Email",
           coldEmailZhTitle: "Chinese Version",
           whatsappTitle: "WhatsApp Message",
+          whatsappZhTitle: "Chinese Version",
           followUpTitle: "Follow-up Messages",
+          followUpToggleToZh: "看中文",
+          followUpToggleToEn: "看英文",
           prospectNamePlaceholder: "Mr. Müller",
           productPlaceholder: "BMW auto parts",
           countryPlaceholder: "Germany",
@@ -350,7 +385,10 @@
           coldEmailTitle: "开发信",
           coldEmailZhTitle: "中文版本",
           whatsappTitle: "WhatsApp 文案",
+          whatsappZhTitle: "中文版本",
           followUpTitle: "跟进消息",
+          followUpToggleToZh: "看中文",
+          followUpToggleToEn: "看英文",
           prospectNamePlaceholder: "Mr. Müller",
           productPlaceholder: "BMW 汽车配件",
           countryPlaceholder: "德国",
@@ -446,6 +484,7 @@
 
       let currentLang = localStorage.getItem("leadforge-lang") || "en";
       let currentTheme = localStorage.getItem("leadforge-theme") || "light";
+      let currentFollowUpView = currentLang === "zh" ? "zh" : "en";
 
       function setStatus(message, isError = false) {
         statusEl.textContent = message;
@@ -481,6 +520,9 @@
         if (fields.whatsappMessage.textContent === emptyText.en || fields.whatsappMessage.textContent === emptyText.zh) {
           fields.whatsappMessage.textContent = emptyText[lang];
         }
+        if (fields.whatsappMessageZh.textContent === emptyText.en || fields.whatsappMessageZh.textContent === emptyText.zh) {
+          fields.whatsappMessageZh.textContent = emptyText[lang];
+        }
         [fields.followUp1, fields.followUp2, fields.followUp3].forEach((field) => {
           if (field.textContent === emptyText.en || field.textContent === emptyText.zh) {
             field.textContent = emptyText[lang];
@@ -491,6 +533,9 @@
           setStatus(translations[lang].statusIdle);
         }
 
+        currentFollowUpView = lang === "zh" ? "zh" : "en";
+        followUpToggle.classList.toggle("hidden", lang !== "zh");
+        renderFollowUps();
         renderHistory();
       }
 
@@ -501,13 +546,42 @@
         themeToggle.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
       }
 
+      function renderFollowUps(data) {
+        if (!data) {
+          data = latestResult;
+        }
+
+        const isChinese = currentLang === "zh" && currentFollowUpView === "zh";
+
+        fields.followUp1.textContent = isChinese
+          ? data?.follow_up_1_zh || translations[currentLang].noContent
+          : data?.follow_up_1 || translations[currentLang].noContent;
+        fields.followUp2.textContent = isChinese
+          ? data?.follow_up_2_zh || translations[currentLang].noContent
+          : data?.follow_up_2 || translations[currentLang].noContent;
+        fields.followUp3.textContent = isChinese
+          ? data?.follow_up_3_zh || translations[currentLang].noContent
+          : data?.follow_up_3 || translations[currentLang].noContent;
+
+        if (followUpToggle && followUpToggleLabel) {
+          followUpToggleLabel.textContent = isChinese
+            ? translations[currentLang].followUpToggleToEn
+            : translations[currentLang].followUpToggleToZh;
+        }
+      }
+
+      let latestResult = null;
+
       function renderResult(data) {
+        latestResult = data;
         fields.coldEmail.textContent = data.cold_email || translations[currentLang].noContent;
         fields.coldEmailZh.textContent = data.cold_email_zh || translations[currentLang].noContent;
         fields.whatsappMessage.textContent = data.whatsapp_message || translations[currentLang].noContent;
+        fields.whatsappMessageZh.textContent = data.whatsapp_message_zh || translations[currentLang].noContent;
         fields.followUp1.textContent = data.follow_up_1 || translations[currentLang].noContent;
         fields.followUp2.textContent = data.follow_up_2 || translations[currentLang].noContent;
         fields.followUp3.textContent = data.follow_up_3 || translations[currentLang].noContent;
+        renderFollowUps(data);
       }
 
       function saveHistory(payload, result) {
@@ -583,6 +657,14 @@
 
       langToggle.addEventListener("click", () => {
         applyLanguage(currentLang === "en" ? "zh" : "en");
+      });
+
+      followUpToggle.addEventListener("click", () => {
+        if (currentLang !== "zh") {
+          return;
+        }
+        currentFollowUpView = currentFollowUpView === "zh" ? "en" : "zh";
+        renderFollowUps();
       });
 
       clearHistoryBtn.addEventListener("click", () => {
