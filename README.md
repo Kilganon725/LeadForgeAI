@@ -1,6 +1,6 @@
 # LeadForge AI
 
-Current version: `1.3.0`
+Current version: `1.3.1`
 
 LeadForge AI is a simple web app for generating B2B outreach copy for foreign trade sales.  
 It creates:
@@ -24,6 +24,7 @@ It creates:
 - `1.1.0` current UI/history update
 - `1.2.0` WhatsApp Chinese version + follow-up language toggle
 - `1.3.0` new theme picker with rainbow flow and glass grid
+- `1.3.1` theme menu stacking fix
 - Increase the major version for larger breaking changes
 
 ## Tech Stack

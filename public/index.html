@@ -200,18 +200,18 @@
   </head>
   <body class="bg-paper text-ink antialiased transition-colors duration-200 dark:bg-slate-950 dark:text-slate-100" data-theme="light">
     <div class="min-h-screen">
-      <header class="border-b border-line/80 bg-white/90 backdrop-blur transition-colors duration-200 dark:border-slate-800 dark:bg-slate-950/80">
+      <header class="relative z-50 border-b border-line/80 bg-white/90 backdrop-blur transition-colors duration-200 dark:border-slate-800 dark:bg-slate-950/80">
         <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 sm:px-6 lg:px-8">
           <div class="min-w-0">
             <div class="flex items-center gap-2">
               <h1 class="truncate text-lg font-semibold tracking-tight sm:text-xl" data-i18n="appTitle">LeadForge AI</h1>
-              <span class="inline-flex h-6 items-center rounded-full border border-line bg-slate-50 px-2 text-[11px] font-medium text-slate-500 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400">v1.3.0</span>
+              <span class="inline-flex h-6 items-center rounded-full border border-line bg-slate-50 px-2 text-[11px] font-medium text-slate-500 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400">v1.3.1</span>
             </div>
             <p class="mt-1 max-w-xl text-sm text-muted dark:text-slate-400" data-i18n="appSubtitle">Generate export outreach content in one step.</p>
           </div>
 
           <div class="flex items-center gap-2 sm:gap-3">
-            <div class="relative">
+            <div class="relative z-50">
               <button
                 id="themeMenuButton"
                 type="button"
@@ -239,7 +239,7 @@
                 </svg>
               </button>
 
-              <div id="themeMenu" class="absolute right-0 top-full z-20 mt-2 hidden w-56 rounded-2xl border border-line bg-white p-2 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+              <div id="themeMenu" class="absolute right-0 top-full z-50 mt-2 hidden w-56 rounded-2xl border border-line bg-white p-2 shadow-soft dark:border-slate-800 dark:bg-slate-900">
                 <button type="button" class="theme-choice flex w-full items-center gap-3 rounded-xl px-3 py-2 text-left text-sm transition hover:bg-slate-50 dark:hover:bg-slate-800" data-theme-choice="light">
                   <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-200">
                     <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -304,7 +304,7 @@
         </div>
       </header>
 
-      <main class="mx-auto max-w-7xl px-5 py-6 sm:px-6 lg:px-8 lg:py-8">
+      <main class="relative z-0 mx-auto max-w-7xl px-5 py-6 sm:px-6 lg:px-8 lg:py-8">
         <div class="grid gap-6 lg:grid-cols-[380px_minmax(0,1fr)]">
           <section class="rounded-2xl border border-line bg-panel p-5 shadow-soft transition-colors duration-200 dark:border-slate-800 dark:bg-slate-900 dark:shadow-none sm:p-6">
             <div class="flex items-start justify-between gap-3">
