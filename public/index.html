@@ -26,42 +26,263 @@
         },
       };
     </script>
+    <style>
+      body {
+        min-height: 100vh;
+      }
+
+      body[data-theme="light"] {
+        background:
+          linear-gradient(180deg, #f8fafc 0%, #f8fafc 100%);
+        color: #0f172a;
+      }
+
+      body[data-theme="dark"] {
+        background: radial-gradient(circle at top, #0f172a 0%, #020617 68%);
+        color: #e2e8f0;
+      }
+
+      body[data-theme="rainbow"] {
+        background: linear-gradient(120deg, #f8fafc 0%, #fef3c7 18%, #ede9fe 36%, #cffafe 54%, #dcfce7 72%, #fee2e2 100%);
+        background-size: 240% 240%;
+        animation: rainbowShift 18s ease-in-out infinite;
+        color: #0f172a;
+      }
+
+      body[data-theme="glass"] {
+        background:
+          linear-gradient(180deg, rgba(2, 6, 23, 0.94), rgba(15, 23, 42, 0.96));
+        color: #e2e8f0;
+      }
+
+      body[data-theme="glass"]::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+        background-size: 64px 64px;
+        opacity: 0.24;
+      }
+
+      @keyframes rainbowShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      body[data-theme="light"] .rounded-2xl.border.border-line.bg-panel,
+      body[data-theme="light"] .rounded-xl.border.border-line.bg-white,
+      body[data-theme="light"] .rounded-xl.border.border-line.bg-slate-50,
+      body[data-theme="light"] .border.border-line.bg-white,
+      body[data-theme="light"] .inline-flex.h-10.items-center.gap-2.rounded-full.border.border-line.bg-white,
+      body[data-theme="light"] .inline-flex.h-9.items-center.gap-2.rounded-full.border.border-line.bg-white {
+        background-color: rgba(255, 255, 255, 0.92) !important;
+        border-color: rgba(226, 232, 240, 0.95) !important;
+        box-shadow: 0 12px 40px rgba(15, 23, 42, 0.06);
+        backdrop-filter: none;
+      }
+
+      body[data-theme="dark"] .rounded-2xl.border.border-line.bg-panel,
+      body[data-theme="dark"] .rounded-xl.border.border-line.bg-white,
+      body[data-theme="dark"] .rounded-xl.border.border-line.bg-slate-50,
+      body[data-theme="dark"] .border.border-line.bg-white,
+      body[data-theme="dark"] .inline-flex.h-10.items-center.gap-2.rounded-full.border.border-line.bg-white,
+      body[data-theme="dark"] .inline-flex.h-9.items-center.gap-2.rounded-full.border.border-line.bg-white {
+        background-color: rgba(15, 23, 42, 0.88) !important;
+        border-color: rgba(51, 65, 85, 0.88) !important;
+        box-shadow: 0 20px 45px rgba(2, 6, 23, 0.32);
+        backdrop-filter: blur(8px);
+      }
+
+      body[data-theme="rainbow"] .rounded-2xl.border.border-line.bg-panel,
+      body[data-theme="rainbow"] .rounded-xl.border.border-line.bg-white,
+      body[data-theme="rainbow"] .rounded-xl.border.border-line.bg-slate-50,
+      body[data-theme="rainbow"] .border.border-line.bg-white,
+      body[data-theme="rainbow"] .inline-flex.h-10.items-center.gap-2.rounded-full.border.border-line.bg-white,
+      body[data-theme="rainbow"] .inline-flex.h-9.items-center.gap-2.rounded-full.border.border-line.bg-white {
+        background: rgba(255, 255, 255, 0.52) !important;
+        border-color: rgba(255, 255, 255, 0.48) !important;
+        box-shadow: 0 18px 52px rgba(15, 23, 42, 0.12);
+        backdrop-filter: blur(18px) saturate(150%);
+      }
+
+      body[data-theme="glass"] .rounded-2xl.border.border-line.bg-panel,
+      body[data-theme="glass"] .rounded-xl.border.border-line.bg-white,
+      body[data-theme="glass"] .rounded-xl.border.border-line.bg-slate-50,
+      body[data-theme="glass"] .border.border-line.bg-white,
+      body[data-theme="glass"] .inline-flex.h-10.items-center.gap-2.rounded-full.border.border-line.bg-white,
+      body[data-theme="glass"] .inline-flex.h-9.items-center.gap-2.rounded-full.border.border-line.bg-white {
+        background: rgba(15, 23, 42, 0.38) !important;
+        border-color: rgba(255, 255, 255, 0.18) !important;
+        box-shadow: 0 24px 60px rgba(2, 6, 23, 0.36);
+        backdrop-filter: blur(24px) saturate(165%);
+      }
+
+      body[data-theme="light"] input,
+      body[data-theme="light"] select,
+      body[data-theme="light"] textarea,
+      body[data-theme="dark"] input,
+      body[data-theme="dark"] select,
+      body[data-theme="dark"] textarea,
+      body[data-theme="rainbow"] input,
+      body[data-theme="rainbow"] select,
+      body[data-theme="rainbow"] textarea,
+      body[data-theme="glass"] input,
+      body[data-theme="glass"] select,
+      body[data-theme="glass"] textarea {
+        transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease, box-shadow 200ms ease;
+      }
+
+      body[data-theme="light"] input,
+      body[data-theme="light"] select,
+      body[data-theme="light"] textarea {
+        background: rgba(255, 255, 255, 0.98) !important;
+        color: #0f172a !important;
+        border-color: rgba(226, 232, 240, 0.95) !important;
+      }
+
+      body[data-theme="dark"] input,
+      body[data-theme="dark"] select,
+      body[data-theme="dark"] textarea {
+        background: rgba(15, 23, 42, 0.9) !important;
+        color: #e2e8f0 !important;
+        border-color: rgba(51, 65, 85, 0.95) !important;
+      }
+
+      body[data-theme="rainbow"] input,
+      body[data-theme="rainbow"] select,
+      body[data-theme="rainbow"] textarea {
+        background: rgba(255, 255, 255, 0.78) !important;
+        color: #0f172a !important;
+        border-color: rgba(255, 255, 255, 0.78) !important;
+      }
+
+      body[data-theme="glass"] input,
+      body[data-theme="glass"] select,
+      body[data-theme="glass"] textarea {
+        background: rgba(15, 23, 42, 0.36) !important;
+        color: #f8fafc !important;
+        border-color: rgba(255, 255, 255, 0.16) !important;
+      }
+
+      body[data-theme="rainbow"] pre,
+      body[data-theme="glass"] pre {
+        backdrop-filter: blur(12px) saturate(140%);
+      }
+
+      body[data-theme="light"] .text-muted,
+      body[data-theme="light"] .text-slate-600,
+      body[data-theme="light"] .text-slate-700 {
+        color: #64748b !important;
+      }
+
+      body[data-theme="glass"] .text-muted,
+      body[data-theme="glass"] .text-slate-600,
+      body[data-theme="glass"] .text-slate-700 {
+        color: rgba(226, 232, 240, 0.78) !important;
+      }
+
+      body[data-theme="rainbow"] .text-muted,
+      body[data-theme="rainbow"] .text-slate-600,
+      body[data-theme="rainbow"] .text-slate-700 {
+        color: #334155 !important;
+      }
+    </style>
   </head>
-  <body class="bg-paper text-ink antialiased transition-colors duration-200 dark:bg-slate-950 dark:text-slate-100">
+  <body class="bg-paper text-ink antialiased transition-colors duration-200 dark:bg-slate-950 dark:text-slate-100" data-theme="light">
     <div class="min-h-screen">
       <header class="border-b border-line/80 bg-white/90 backdrop-blur transition-colors duration-200 dark:border-slate-800 dark:bg-slate-950/80">
         <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 sm:px-6 lg:px-8">
           <div class="min-w-0">
             <div class="flex items-center gap-2">
               <h1 class="truncate text-lg font-semibold tracking-tight sm:text-xl" data-i18n="appTitle">LeadForge AI</h1>
-              <span class="inline-flex h-6 items-center rounded-full border border-line bg-slate-50 px-2 text-[11px] font-medium text-slate-500 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400">v1.2.0</span>
+              <span class="inline-flex h-6 items-center rounded-full border border-line bg-slate-50 px-2 text-[11px] font-medium text-slate-500 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400">v1.3.0</span>
             </div>
             <p class="mt-1 max-w-xl text-sm text-muted dark:text-slate-400" data-i18n="appSubtitle">Generate export outreach content in one step.</p>
           </div>
 
           <div class="flex items-center gap-2 sm:gap-3">
-            <button
-              id="themeToggle"
-              type="button"
-              class="inline-flex h-10 items-center gap-2 rounded-full border border-line bg-white px-3 text-sm font-medium text-slate-700 shadow-sm transition hover:border-slate-300 hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-slate-700 dark:hover:bg-slate-800"
-              aria-label="Toggle theme"
-              aria-pressed="false"
-            >
-              <span class="relative flex h-6 w-6 items-center justify-center rounded-full bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-200">
-                <svg class="h-3.5 w-3.5 transition-opacity" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <circle cx="12" cy="12" r="4"></circle>
-                  <path d="M12 2v2"></path>
-                  <path d="M12 20v2"></path>
-                  <path d="M4.93 4.93l1.41 1.41"></path>
-                  <path d="M17.66 17.66l1.41 1.41"></path>
-                  <path d="M2 12h2"></path>
-                  <path d="M20 12h2"></path>
-                  <path d="M6.34 17.66l-1.41 1.41"></path>
-                  <path d="M19.07 4.93l-1.41 1.41"></path>
+            <div class="relative">
+              <button
+                id="themeMenuButton"
+                type="button"
+                class="inline-flex h-10 items-center gap-2 rounded-full border border-line bg-white px-3 text-sm font-medium text-slate-700 shadow-sm transition hover:border-slate-300 hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-slate-700 dark:hover:bg-slate-800"
+                aria-label="Open theme menu"
+                aria-expanded="false"
+              >
+                <span id="themeIcon" class="relative flex h-6 w-6 items-center justify-center rounded-full bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-200">
+                  <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <path d="M12 2v2"></path>
+                    <path d="M12 20v2"></path>
+                    <path d="M4.93 4.93l1.41 1.41"></path>
+                    <path d="M17.66 17.66l1.41 1.41"></path>
+                    <path d="M2 12h2"></path>
+                    <path d="M20 12h2"></path>
+                    <path d="M6.34 17.66l-1.41 1.41"></path>
+                    <path d="M19.07 4.93l-1.41 1.41"></path>
+                  </svg>
+                </span>
+                <span class="hidden sm:inline" data-i18n="themeLabel">Theme</span>
+                <span id="themeName" class="hidden md:inline text-xs font-medium text-muted dark:text-slate-400">Light</span>
+                <svg class="h-3.5 w-3.5 text-muted dark:text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6"></path>
                 </svg>
-              </span>
-              <span class="hidden sm:inline" data-i18n="themeLabel">Theme</span>
-            </button>
+              </button>
+
+              <div id="themeMenu" class="absolute right-0 top-full z-20 mt-2 hidden w-56 rounded-2xl border border-line bg-white p-2 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+                <button type="button" class="theme-choice flex w-full items-center gap-3 rounded-xl px-3 py-2 text-left text-sm transition hover:bg-slate-50 dark:hover:bg-slate-800" data-theme-choice="light">
+                  <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-200">
+                    <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <circle cx="12" cy="12" r="4"></circle>
+                      <path d="M12 2v2"></path>
+                      <path d="M12 20v2"></path>
+                      <path d="M4.93 4.93l1.41 1.41"></path>
+                      <path d="M17.66 17.66l1.41 1.41"></path>
+                    </svg>
+                  </span>
+                  <span data-i18n="themeLight">Light</span>
+                </button>
+                <button type="button" class="theme-choice flex w-full items-center gap-3 rounded-xl px-3 py-2 text-left text-sm transition hover:bg-slate-50 dark:hover:bg-slate-800" data-theme-choice="dark">
+                  <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-200">
+                    <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"></path>
+                    </svg>
+                  </span>
+                  <span data-i18n="themeDark">Dark</span>
+                </button>
+                <button type="button" class="theme-choice flex w-full items-center gap-3 rounded-xl px-3 py-2 text-left text-sm transition hover:bg-slate-50 dark:hover:bg-slate-800" data-theme-choice="rainbow">
+                  <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-200">
+                    <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M4 16c2-5 6-8 8-8s6 3 8 8"></path>
+                      <path d="M7 16c1.5-3.5 4-6 5-6s3.5 2.5 5 6"></path>
+                      <path d="M10 16c.8-1.8 2-3 2-3s1.2 1.2 2 3"></path>
+                    </svg>
+                  </span>
+                  <span data-i18n="themeRainbow">Rainbow Flow</span>
+                </button>
+                <button type="button" class="theme-choice flex w-full items-center gap-3 rounded-xl px-3 py-2 text-left text-sm transition hover:bg-slate-50 dark:hover:bg-slate-800" data-theme-choice="glass">
+                  <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-200">
+                    <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M4 7h16M4 12h16M4 17h16"></path>
+                      <path d="M7 4v16"></path>
+                      <path d="M12 4v16"></path>
+                      <path d="M17 4v16"></path>
+                    </svg>
+                  </span>
+                  <span data-i18n="themeGlass">Glass Grid</span>
+                </button>
+              </div>
+            </div>
 
             <button
               id="langToggle"
@@ -306,7 +527,10 @@
       const form = document.getElementById("generator-form");
       const statusEl = document.getElementById("status");
       const submitBtn = form.querySelector("button[type='submit']");
-      const themeToggle = document.getElementById("themeToggle");
+      const themeMenuButton = document.getElementById("themeMenuButton");
+      const themeMenu = document.getElementById("themeMenu");
+      const themeIcon = document.getElementById("themeIcon");
+      const themeName = document.getElementById("themeName");
       const langToggle = document.getElementById("langToggle");
       const langLabel = document.getElementById("langLabel");
       const followUpToggle = document.getElementById("followUpToggle");
@@ -326,11 +550,45 @@
 
       const historyKey = "leadforge-history";
 
+      const themeIcons = {
+        light: `
+          <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="M4.93 4.93l1.41 1.41"></path>
+            <path d="M17.66 17.66l1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+          </svg>`,
+        dark: `
+          <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"></path>
+          </svg>`,
+        rainbow: `
+          <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 16c2-5 6-8 8-8s6 3 8 8"></path>
+            <path d="M7 16c1.5-3.5 4-6 5-6s3.5 2.5 5 6"></path>
+            <path d="M10 16c.8-1.8 2-3 2-3s1.2 1.2 2 3"></path>
+          </svg>`,
+        glass: `
+          <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16"></path>
+            <path d="M7 4v16"></path>
+            <path d="M12 4v16"></path>
+            <path d="M17 4v16"></path>
+          </svg>`,
+      };
+
       const translations = {
         en: {
           appTitle: "LeadForge AI",
           appSubtitle: "Generate export outreach content in one step.",
           themeLabel: "Theme",
+          themeLight: "Light",
+          themeDark: "Dark",
+          themeRainbow: "Rainbow Flow",
+          themeGlass: "Glass Grid",
           langButtonLabel: "中文",
           inputFormTitle: "Input Form",
           inputFormHint: "Fill in the details and generate ready-to-send copy.",
@@ -367,6 +625,10 @@
           appTitle: "LeadForge AI",
           appSubtitle: "一键生成外贸开发信内容。",
           themeLabel: "主题",
+          themeLight: "浅色",
+          themeDark: "深色",
+          themeRainbow: "彩虹流动",
+          themeGlass: "液态玻璃",
           langButtonLabel: "EN",
           inputFormTitle: "输入表单",
           inputFormHint: "填写信息后，生成可直接发送的文案。",
@@ -537,13 +799,33 @@
         followUpToggle.classList.toggle("hidden", lang !== "zh");
         renderFollowUps();
         renderHistory();
+        syncThemeUI();
+      }
+
+      function syncThemeUI() {
+        const labelKeyMap = {
+          light: "themeLight",
+          dark: "themeDark",
+          rainbow: "themeRainbow",
+          glass: "themeGlass",
+        };
+        themeIcon.innerHTML = themeIcons[currentTheme] || themeIcons.light;
+        themeName.textContent = translations[currentLang][labelKeyMap[currentTheme]] || translations[currentLang].themeLabel;
+
+        themeMenu.querySelectorAll("[data-theme-choice]").forEach((button) => {
+          const isActive = button.getAttribute("data-theme-choice") === currentTheme;
+          button.setAttribute("aria-pressed", isActive ? "true" : "false");
+          button.classList.toggle("bg-slate-50", isActive);
+          button.classList.toggle("dark:bg-slate-800", isActive);
+        });
       }
 
       function applyTheme(theme) {
         currentTheme = theme;
         localStorage.setItem("leadforge-theme", theme);
+        document.body.dataset.theme = theme;
         document.documentElement.classList.toggle("dark", theme === "dark");
-        themeToggle.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
+        syncThemeUI();
       }
 
       function renderFollowUps(data) {
@@ -651,8 +933,18 @@
         }
       });
 
-      themeToggle.addEventListener("click", () => {
-        applyTheme(currentTheme === "light" ? "dark" : "light");
+      themeMenuButton.addEventListener("click", (event) => {
+        event.stopPropagation();
+        themeMenu.classList.toggle("hidden");
+        themeMenuButton.setAttribute("aria-expanded", themeMenu.classList.contains("hidden") ? "false" : "true");
+      });
+
+      themeMenu.querySelectorAll("[data-theme-choice]").forEach((button) => {
+        button.addEventListener("click", () => {
+          applyTheme(button.getAttribute("data-theme-choice"));
+          themeMenu.classList.add("hidden");
+          themeMenuButton.setAttribute("aria-expanded", "false");
+        });
       });
 
       langToggle.addEventListener("click", () => {
@@ -678,6 +970,13 @@
 
         const item = readHistory().find((entry) => entry.id === button.getAttribute("data-history-id"));
         if (item) loadHistoryItem(item);
+      });
+
+      document.addEventListener("click", (event) => {
+        if (!themeMenu.contains(event.target) && !themeMenuButton.contains(event.target)) {
+          themeMenu.classList.add("hidden");
+          themeMenuButton.setAttribute("aria-expanded", "false");
+        }
       });
 
       applyTheme(currentTheme);
