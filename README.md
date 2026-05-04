@@ -1,5 +1,7 @@
 # LeadForge AI
 
+Current version: `1.1.0`
+
 LeadForge AI is a simple web app for generating B2B outreach copy for foreign trade sales.  
 It creates:
 
@@ -15,6 +17,12 @@ It creates:
 - DeepSeek API integration
 - Light and dark mode
 - English / Chinese language switch
+
+## Versioning
+
+- `1.0.0` base release
+- `1.1.0` current UI/history update
+- Increase the major version for larger breaking changes
 
 ## Tech Stack
 
@@ -75,4 +83,3 @@ http://localhost:3000
 - Do not commit `.env` to GitHub.
 - The app expects `DEEPSEEK_API_KEY` to be available in the environment.
 - If you change `.env`, restart the server.
-
