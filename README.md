@@ -1,6 +1,6 @@
 # LeadForge AI
 
-Current version: `1.3.2`
+Current version: `1.4.0`
 
 LeadForge AI is a simple web app for generating B2B outreach copy for foreign trade sales.  
 It creates:
@@ -17,6 +17,7 @@ It creates:
 - DeepSeek API integration
 - Light and dark mode
 - English / Chinese language switch
+- Release history and project overview page
 
 ## Versioning
 
@@ -26,6 +27,7 @@ It creates:
 - `1.3.0` new theme picker with rainbow flow and glass grid
 - `1.3.1` theme menu stacking fix
 - `1.3.2` glass theme menu contrast fix
+- `1.4.0` updates page and project overview
 - Increase the major version for larger breaking changes
 
 ## Tech Stack

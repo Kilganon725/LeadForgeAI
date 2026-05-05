@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LeadForge AI Updates</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+      };
+      if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        min-height: 100vh;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 600ms ease, transform 600ms ease;
+      }
+
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.78);
+        backdrop-filter: blur(18px) saturate(150%);
+        border: 1px solid rgba(226, 232, 240, 0.95);
+        box-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+      }
+
+      .chip-active {
+        background: #0f172a;
+        color: #fff;
+        border-color: #0f172a;
+      }
+
+      .dark .glass-panel {
+        background: rgba(15, 23, 42, 0.72);
+        border-color: rgba(51, 65, 85, 0.8);
+        box-shadow: 0 18px 50px rgba(2, 6, 23, 0.42);
+      }
+    </style>
+  </head>
+  <body class="bg-[radial-gradient(circle_at_top,_rgba(15,118,110,0.08),_transparent_32%),linear-gradient(180deg,#f8fafc_0%,#eef2f7_100%)] text-slate-900 antialiased dark:bg-[radial-gradient(circle_at_top,_rgba(15,118,110,0.12),_transparent_30%),linear-gradient(180deg,#020617_0%,#0f172a_100%)] dark:text-slate-100">
+    <main class="mx-auto max-w-7xl px-5 py-6 sm:px-6 lg:px-8 lg:py-8">
+      <header class="flex items-center justify-between gap-4">
+        <a href="/" class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:border-slate-300 hover:bg-white dark:border-slate-800 dark:bg-slate-900/80 dark:text-slate-200 dark:hover:border-slate-700 dark:hover:bg-slate-900">
+          <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-300">
+            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M15 18l-6-6 6-6"></path>
+            </svg>
+          </span>
+          <span>Back to app</span>
+        </a>
+
+        <span class="inline-flex h-8 items-center rounded-full border border-slate-200 bg-white/80 px-3 text-xs font-medium text-slate-500 shadow-sm dark:border-slate-800 dark:bg-slate-900/80 dark:text-slate-400">v1.4.0</span>
+      </header>
+
+      <section class="mt-6 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+        <div class="reveal glass-panel rounded-[28px] px-6 py-7 sm:px-8 sm:py-8">
+          <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-xs font-medium text-slate-600 dark:border-slate-700 dark:bg-slate-900/70 dark:text-slate-300">
+            <span class="h-2 w-2 rounded-full bg-teal-500"></span>
+            Release Notes
+          </div>
+          <h1 class="mt-4 max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl">
+            LeadForge AI updates and release history
+          </h1>
+          <p class="mt-4 max-w-2xl text-base leading-7 text-slate-600 dark:text-slate-300">
+            LeadForge AI helps foreign trade teams turn a product, target market, and company profile into ready-to-send outreach.
+            This page shows what each version added and why the product exists.
+          </p>
+
+          <div class="mt-7 grid gap-3 sm:grid-cols-3">
+            <div class="rounded-2xl border border-slate-200 bg-white/80 px-4 py-4 dark:border-slate-700 dark:bg-slate-950/40">
+              <div class="text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">Purpose</div>
+              <div class="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-200">Generate outreach copy for export sales development.</div>
+            </div>
+            <div class="rounded-2xl border border-slate-200 bg-white/80 px-4 py-4 dark:border-slate-700 dark:bg-slate-950/40">
+              <div class="text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">Workflow</div>
+              <div class="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-200">Input a product, country, and buyer type, then generate content.</div>
+            </div>
+            <div class="rounded-2xl border border-slate-200 bg-white/80 px-4 py-4 dark:border-slate-700 dark:bg-slate-950/40">
+              <div class="text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">Output</div>
+              <div class="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-200">Email, WhatsApp, follow-ups, and bilingual review copy.</div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="reveal glass-panel rounded-[28px] px-6 py-7 sm:px-8 sm:py-8">
+          <div class="text-xs font-medium uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">Current Release</div>
+          <div class="mt-3 flex items-end gap-3">
+            <div class="text-4xl font-semibold tracking-tight">1.4.0</div>
+            <div class="pb-1 text-sm text-slate-500 dark:text-slate-400">Updates hub launch</div>
+          </div>
+          <p class="mt-4 text-sm leading-6 text-slate-600 dark:text-slate-300">
+            Added a dedicated release page to explain the product, track every update, and keep the app easy to review as it grows.
+          </p>
+
+          <div class="mt-6 space-y-3">
+            <a href="#v140" class="block rounded-2xl border border-slate-200 bg-white/80 px-4 py-3 text-sm text-slate-700 transition hover:-translate-y-0.5 hover:border-slate-300 hover:bg-white dark:border-slate-700 dark:bg-slate-950/40 dark:text-slate-200 dark:hover:border-slate-600">
+              Jump to 1.4.0
+            </a>
+            <a href="#timeline" class="block rounded-2xl border border-slate-200 bg-white/80 px-4 py-3 text-sm text-slate-700 transition hover:-translate-y-0.5 hover:border-slate-300 hover:bg-white dark:border-slate-700 dark:bg-slate-950/40 dark:text-slate-200 dark:hover:border-slate-600">
+              View full timeline
+            </a>
+          </div>
+        </aside>
+      </section>
+
+      <section class="reveal mt-6 glass-panel rounded-[28px] px-6 py-6 sm:px-8 sm:py-7">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <h2 class="text-lg font-semibold tracking-tight">Filter releases</h2>
+            <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">Switch between all updates and the main product areas.</p>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <button class="filter-chip chip-active rounded-full border border-slate-200 px-4 py-2 text-sm font-medium transition" data-filter="all">All</button>
+            <button class="filter-chip rounded-full border border-slate-200 px-4 py-2 text-sm font-medium transition" data-filter="platform">Platform</button>
+            <button class="filter-chip rounded-full border border-slate-200 px-4 py-2 text-sm font-medium transition" data-filter="messaging">Messaging</button>
+            <button class="filter-chip rounded-full border border-slate-200 px-4 py-2 text-sm font-medium transition" data-filter="ui">UI</button>
+            <button class="filter-chip rounded-full border border-slate-200 px-4 py-2 text-sm font-medium transition" data-filter="foundation">Foundation</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="timeline" class="mt-6 space-y-4">
+        <article id="v140" class="release-card reveal glass-panel rounded-[28px] px-6 py-6 sm:px-8 sm:py-7" data-tags="platform ui">
+          <div class="flex flex-wrap items-start justify-between gap-4">
+            <div>
+              <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-xs font-medium text-slate-500 dark:border-slate-700 dark:bg-slate-950/40 dark:text-slate-300">1.4.0</div>
+              <h3 class="mt-3 text-xl font-semibold tracking-tight">Updates hub and project story</h3>
+              <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-300">
+                Added a dedicated webpage for release history and a clear explanation of what the product is for.
+              </p>
+            </div>
+            <div class="text-sm text-slate-500 dark:text-slate-400">Latest</div>
+          </div>
+          <ul class="mt-5 grid gap-3 md:grid-cols-2">
+            <li class="rounded-2xl border border-slate-200 bg-white/70 px-4 py-4 text-sm leading-6 dark:border-slate-700 dark:bg-slate-950/35">New updates page with version timeline and release summaries.</li>
+            <li class="rounded-2xl border border-slate-200 bg-white/70 px-4 py-4 text-sm leading-6 dark:border-slate-700 dark:bg-slate-950/35">Project explanation for foreign trade outreach workflow and output.</li>
+            <li class="rounded-2xl border border-slate-200 bg-white/70 px-4 py-4 text-sm leading-6 dark:border-slate-700 dark:bg-slate-950/35">Smooth filtering, reveal transitions, and responsive timeline layout.</li>
+            <li class="rounded-2xl border border-slate-200 bg-white/70 px-4 py-4 text-sm leading-6 dark:border-slate-700 dark:bg-slate-950/35">Versioning aligned to the app release badge and package metadata.</li>
+          </ul>
+        </article>
+
+        <article class="release-card reveal glass-panel rounded-[28px] px-6 py-6 sm:px-8 sm:py-7" data-tags="ui platform">
+          <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-xs font-medium text-slate-500 dark:border-slate-700 dark:bg-slate-950/40 dark:text-slate-300">1.3.2</div>
+          <h3 class="mt-3 text-xl font-semibold tracking-tight">Glass menu contrast fix</h3>
+          <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-300">
+            Fixed the glass theme dropdown so the selected state and menu text stay readable against the frosted panel.
+          </p>
+        </article>
+
+        <article class="release-card reveal glass-panel rounded-[28px] px-6 py-6 sm:px-8 sm:py-7" data-tags="ui platform">
+          <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-xs font-medium text-slate-500 dark:border-slate-700 dark:bg-slate-950/40 dark:text-slate-300">1.3.1</div>
+          <h3 class="mt-3 text-xl font-semibold tracking-tight">Theme menu stacking fix</h3>
+          <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-300">
+            Lifted the theme menu above the app content so it opens cleanly without being covered by the homepage panels.
+          </p>
+        </article>
+
+        <article class="release-card reveal glass-panel rounded-[28px] px-6 py-6 sm:px-8 sm:py-7" data-tags="ui">
+          <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-xs font-medium text-slate-500 dark:border-slate-700 dark:bg-slate-950/40 dark:text-slate-300">1.3.0</div>
+          <h3 class="mt-3 text-xl font-semibold tracking-tight">Theme picker expansion</h3>
+          <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-300">
+            Expanded the theme system to include light, dark, rainbow flow, and glass grid styles.
+          </p>
+        </article>
+
+        <article class="release-card reveal glass-panel rounded-[28px] px-6 py-6 sm:px-8 sm:py-7" data-tags="messaging ui">
+          <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-xs font-medium text-slate-500 dark:border-slate-700 dark:bg-slate-950/40 dark:text-slate-300">1.2.0</div>
+          <h3 class="mt-3 text-xl font-semibold tracking-tight">Bilingual messaging output</h3>
+          <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-300">
+            Added Chinese versions for the WhatsApp opener and follow-up messages, with a per-section toggle for review.
+          </p>
+        </article>
+
+        <article class="release-card reveal glass-panel rounded-[28px] px-6 py-6 sm:px-8 sm:py-7" data-tags="ui platform">
+          <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-xs font-medium text-slate-500 dark:border-slate-700 dark:bg-slate-950/40 dark:text-slate-300">1.1.0</div>
+          <h3 class="mt-3 text-xl font-semibold tracking-tight">History and version tracking</h3>
+          <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-300">
+            Added local history in the browser, plus the first visible versioning system for the product.
+          </p>
+        </article>
+
+        <article class="release-card reveal glass-panel rounded-[28px] px-6 py-6 sm:px-8 sm:py-7" data-tags="foundation">
+          <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-xs font-medium text-slate-500 dark:border-slate-700 dark:bg-slate-950/40 dark:text-slate-300">1.0.0</div>
+          <h3 class="mt-3 text-xl font-semibold tracking-tight">Initial launch</h3>
+          <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-300">
+            Laid the foundation for product, country, customer type, and company strength inputs with AI-generated outreach copy.
+          </p>
+        </article>
+      </section>
+    </main>
+
+    <script>
+      const chips = Array.from(document.querySelectorAll(".filter-chip"));
+      const cards = Array.from(document.querySelectorAll(".release-card"));
+      const reveals = Array.from(document.querySelectorAll(".reveal"));
+
+      function setFilter(activeFilter) {
+        chips.forEach((chip) => {
+          const isActive = chip.dataset.filter === activeFilter;
+          chip.classList.toggle("chip-active", isActive);
+          chip.classList.toggle("bg-white/80", !isActive);
+          chip.classList.toggle("dark:bg-slate-950/40", !isActive);
+        });
+
+        cards.forEach((card) => {
+          const tags = card.dataset.tags.split(" ");
+          const show = activeFilter === "all" || tags.includes(activeFilter);
+          card.style.display = show ? "" : "none";
+        });
+      }
+
+      chips.forEach((chip) => {
+        chip.addEventListener("click", () => setFilter(chip.dataset.filter));
+      });
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.14 }
+      );
+
+      reveals.forEach((node) => observer.observe(node));
+      setFilter("all");
+    </script>
+  </body>
+</html>
