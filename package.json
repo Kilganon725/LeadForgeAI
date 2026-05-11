@@ -1,6 +1,6 @@
 {
   "name": "leadforge-ai",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "private": true,
   "description": "Simple outreach generator for foreign trade sales development.",
   "main": "server.js",

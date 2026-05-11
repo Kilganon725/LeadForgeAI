@@ -231,7 +231,7 @@
           <div class="min-w-0">
             <div class="flex items-center gap-2">
               <h1 class="truncate text-lg font-semibold tracking-tight sm:text-xl" data-i18n="appTitle">LeadForge AI</h1>
-              <span class="inline-flex h-6 items-center rounded-full border border-line bg-slate-50 px-2 text-[11px] font-medium text-slate-500 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400">v1.4.0</span>
+              <span class="inline-flex h-6 items-center rounded-full border border-line bg-slate-50 px-2 text-[11px] font-medium text-slate-500 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400">v1.5.0</span>
             </div>
             <p class="mt-1 max-w-xl text-sm text-muted dark:text-slate-400" data-i18n="appSubtitle">Generate export outreach content in one step.</p>
           </div>
@@ -324,22 +324,47 @@
               </div>
             </div>
 
-            <button
-              id="langToggle"
-              type="button"
-              class="inline-flex h-10 items-center gap-2 rounded-full border border-line bg-white px-3 text-sm font-medium text-slate-700 shadow-sm transition hover:border-slate-300 hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-slate-700 dark:hover:bg-slate-800"
-              aria-label="Toggle language"
-            >
-              <span class="relative flex h-6 w-6 items-center justify-center rounded-full bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-200">
-                <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <path d="M2 12h20"></path>
-                  <path d="M12 2a15.3 15.3 0 0 1 0 20"></path>
-                  <path d="M12 2a15.3 15.3 0 0 0 0 20"></path>
+            <div class="relative z-50">
+              <button
+                id="langToggle"
+                type="button"
+                class="inline-flex h-10 items-center gap-2 rounded-full border border-line bg-white px-3 text-sm font-medium text-slate-700 shadow-sm transition hover:border-slate-300 hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-slate-700 dark:hover:bg-slate-800"
+                aria-label="Open language menu"
+                aria-expanded="false"
+              >
+                <span class="relative flex h-6 w-6 items-center justify-center rounded-full bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-200">
+                  <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M2 12h20"></path>
+                    <path d="M12 2a15.3 15.3 0 0 1 0 20"></path>
+                    <path d="M12 2a15.3 15.3 0 0 0 0 20"></path>
+                  </svg>
+                </span>
+                <span id="langLabel" class="hidden sm:inline" data-i18n="langButtonLabel">EN</span>
+                <svg class="h-3.5 w-3.5 text-muted dark:text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6"></path>
                 </svg>
-              </span>
-              <span id="langLabel" class="hidden sm:inline" data-i18n="langButtonLabel">中文</span>
-            </button>
+              </button>
+
+              <div id="langMenu" class="absolute right-0 top-full z-50 mt-2 hidden w-52 rounded-2xl border border-line bg-white p-2 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+                <button type="button" class="lang-choice flex w-full items-center gap-3 rounded-xl px-3 py-2 text-left text-sm transition hover:bg-slate-50 dark:hover:bg-slate-800" data-lang-choice="en">
+                  <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-200">EN</span>
+                  <span>English</span>
+                </button>
+                <button type="button" class="lang-choice flex w-full items-center gap-3 rounded-xl px-3 py-2 text-left text-sm transition hover:bg-slate-50 dark:hover:bg-slate-800" data-lang-choice="zh">
+                  <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-200">中文</span>
+                  <span>简体中文</span>
+                </button>
+                <button type="button" class="lang-choice flex w-full items-center gap-3 rounded-xl px-3 py-2 text-left text-sm transition hover:bg-slate-50 dark:hover:bg-slate-800" data-lang-choice="it">
+                  <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-200">IT</span>
+                  <span>Italiano</span>
+                </button>
+                <button type="button" class="lang-choice flex w-full items-center gap-3 rounded-xl px-3 py-2 text-left text-sm transition hover:bg-slate-50 dark:hover:bg-slate-800" data-lang-choice="es">
+                  <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-200">ES</span>
+                  <span>Español</span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </header>
@@ -572,6 +597,7 @@
       const themeIcon = document.getElementById("themeIcon");
       const themeName = document.getElementById("themeName");
       const langToggle = document.getElementById("langToggle");
+      const langMenu = document.getElementById("langMenu");
       const langLabel = document.getElementById("langLabel");
       const followUpToggle = document.getElementById("followUpToggle");
       const followUpToggleLabel = document.getElementById("followUpToggleLabel");
@@ -629,7 +655,7 @@
           themeDark: "Dark",
           themeRainbow: "Rainbow Flow",
           themeGlass: "Glass Grid",
-          langButtonLabel: "中文",
+          langButtonLabel: "EN",
           inputFormTitle: "Input Form",
           inputFormHint: "Fill in the details and generate ready-to-send copy.",
           historyTitle: "History",
@@ -660,6 +686,8 @@
           statusDone: "Content generated successfully.",
           statusErrorPrefix: "",
           noContent: "No content generated yet.",
+          historyEmpty: "No history yet.",
+          untitledRecord: "Untitled record",
         },
         zh: {
           appTitle: "LeadForge AI",
@@ -669,7 +697,7 @@
           themeDark: "深色",
           themeRainbow: "彩虹流动",
           themeGlass: "液态玻璃",
-          langButtonLabel: "EN",
+          langButtonLabel: "中文",
           inputFormTitle: "输入表单",
           inputFormHint: "填写信息后，生成可直接发送的文案。",
           historyTitle: "历史记录",
@@ -700,12 +728,114 @@
           statusDone: "内容生成成功。",
           statusErrorPrefix: "错误：",
           noContent: "暂无内容。",
+          historyEmpty: "暂无历史记录。",
+          untitledRecord: "未命名记录",
+        },
+        it: {
+          appTitle: "LeadForge AI",
+          appSubtitle: "Genera contenuti di outreach export in un solo passaggio.",
+          themeLabel: "Tema",
+          themeLight: "Chiaro",
+          themeDark: "Scuro",
+          themeRainbow: "Flusso arcobaleno",
+          themeGlass: "Griglia vetro",
+          langButtonLabel: "IT",
+          inputFormTitle: "Modulo di input",
+          inputFormHint: "Compila i dettagli e genera un testo pronto da inviare.",
+          historyTitle: "Cronologia",
+          historyHint: "Salvata localmente in questo browser.",
+          clearHistoryLabel: "Cancella",
+          prospectNameLabel: "Nome del prospect",
+          productLabel: "Prodotto",
+          countryLabel: "Paese target",
+          customerTypeLabel: "Tipo di cliente",
+          customerTypePlaceholder: "Seleziona il tipo di cliente",
+          companyStrengthLabel: "Punti di forza aziendali",
+          senderNameLabel: "Il tuo nome",
+          optionalLabel: "(facoltativo)",
+          generateButton: "Genera outreach",
+          coldEmailTitle: "Cold Email",
+          coldEmailZhTitle: "Versione cinese",
+          whatsappTitle: "Messaggio WhatsApp",
+          whatsappZhTitle: "Versione cinese",
+          followUpTitle: "Messaggi di follow-up",
+          followUpToggleToZh: "看中文",
+          followUpToggleToEn: "看英文",
+          prospectNamePlaceholder: "Sig. Müller",
+          productPlaceholder: "Ricambi auto BMW",
+          countryPlaceholder: "Germania",
+          senderNamePlaceholder: "John Smith",
+          statusIdle: "Nessun contenuto ancora generato.",
+          statusWorking: "Generazione del contenuto in corso...",
+          statusDone: "Contenuto generato correttamente.",
+          statusErrorPrefix: "Errore: ",
+          noContent: "Nessun contenuto ancora generato.",
+          historyEmpty: "Nessuna cronologia disponibile.",
+          untitledRecord: "Record senza titolo",
+        },
+        es: {
+          appTitle: "LeadForge AI",
+          appSubtitle: "Genera contenido de prospección exportadora en un solo paso.",
+          themeLabel: "Tema",
+          themeLight: "Claro",
+          themeDark: "Oscuro",
+          themeRainbow: "Flujo arcoíris",
+          themeGlass: "Cuadrícula de vidrio",
+          langButtonLabel: "ES",
+          inputFormTitle: "Formulario",
+          inputFormHint: "Rellena los datos y genera texto listo para enviar.",
+          historyTitle: "Historial",
+          historyHint: "Guardado localmente en este navegador.",
+          clearHistoryLabel: "Borrar",
+          prospectNameLabel: "Nombre del prospecto",
+          productLabel: "Producto",
+          countryLabel: "País objetivo",
+          customerTypeLabel: "Tipo de cliente",
+          customerTypePlaceholder: "Selecciona el tipo de cliente",
+          companyStrengthLabel: "Fortaleza de la empresa",
+          senderNameLabel: "Tu nombre",
+          optionalLabel: "(opcional)",
+          generateButton: "Generar outreach",
+          coldEmailTitle: "Cold Email",
+          coldEmailZhTitle: "Versión china",
+          whatsappTitle: "Mensaje de WhatsApp",
+          whatsappZhTitle: "Versión china",
+          followUpTitle: "Mensajes de seguimiento",
+          followUpToggleToZh: "看中文",
+          followUpToggleToEn: "看英文",
+          prospectNamePlaceholder: "Sr. Müller",
+          productPlaceholder: "Repuestos BMW",
+          countryPlaceholder: "Alemania",
+          senderNamePlaceholder: "John Smith",
+          statusIdle: "Todavía no se ha generado contenido.",
+          statusWorking: "Generando contenido de prospección...",
+          statusDone: "Contenido generado correctamente.",
+          statusErrorPrefix: "Error: ",
+          noContent: "Todavía no se ha generado contenido.",
+          historyEmpty: "Aún no hay historial.",
+          untitledRecord: "Registro sin título",
         },
       };
 
       const emptyText = {
         en: "No content generated yet.",
         zh: "暂无内容。",
+        it: "Nessun contenuto ancora generato.",
+        es: "Todavía no se ha generado contenido.",
+      };
+
+      const languageLabels = {
+        en: "EN",
+        zh: "中文",
+        it: "IT",
+        es: "ES",
+      };
+
+      const languageLocaleMap = {
+        en: "en-US",
+        zh: "zh-CN",
+        it: "it-IT",
+        es: "es-ES",
       };
 
       function readHistory() {
@@ -731,7 +861,7 @@
 
       function formatHistoryTime(ts) {
         try {
-          return new Intl.DateTimeFormat(currentLang === "zh" ? "zh-CN" : "en-US", {
+          return new Intl.DateTimeFormat(languageLocaleMap[currentLang] || "en-US", {
             month: "short",
             day: "numeric",
             hour: "2-digit",
@@ -747,13 +877,13 @@
         if (item.prospectName) parts.push(item.prospectName);
         if (item.product) parts.push(item.product);
         if (item.country) parts.push(item.country);
-        return parts.join(" · ") || (currentLang === "zh" ? "未命名记录" : "Untitled record");
+        return parts.join(" · ") || translations[currentLang].untitledRecord;
       }
 
       function renderHistory() {
         const items = readHistory();
         if (!items.length) {
-          historyList.innerHTML = `<div class="rounded-xl border border-dashed border-line bg-slate-50 px-4 py-4 text-sm text-muted dark:border-slate-800 dark:bg-slate-950 dark:text-slate-400">${currentLang === "zh" ? "暂无历史记录。" : "No history yet."}</div>`;
+          historyList.innerHTML = `<div class="rounded-xl border border-dashed border-line bg-slate-50 px-4 py-4 text-sm text-muted dark:border-slate-800 dark:bg-slate-950 dark:text-slate-400">${translations[currentLang].historyEmpty}</div>`;
           return;
         }
 
@@ -796,8 +926,8 @@
       function applyLanguage(lang) {
         currentLang = lang;
         localStorage.setItem("leadforge-lang", lang);
-        document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
-        langLabel.textContent = translations[lang].langButtonLabel;
+        document.documentElement.lang = languageLocaleMap[lang] || "en-US";
+        langLabel.textContent = translations[lang].langButtonLabel || languageLabels[lang] || "EN";
 
         document.querySelectorAll("[data-i18n]").forEach((node) => {
           const key = node.getAttribute("data-i18n");
@@ -988,7 +1118,16 @@
       });
 
       langToggle.addEventListener("click", () => {
-        applyLanguage(currentLang === "en" ? "zh" : "en");
+        langMenu.classList.toggle("hidden");
+        langToggle.setAttribute("aria-expanded", langMenu.classList.contains("hidden") ? "false" : "true");
+      });
+
+      langMenu.querySelectorAll("[data-lang-choice]").forEach((button) => {
+        button.addEventListener("click", () => {
+          applyLanguage(button.getAttribute("data-lang-choice"));
+          langMenu.classList.add("hidden");
+          langToggle.setAttribute("aria-expanded", "false");
+        });
       });
 
       followUpToggle.addEventListener("click", () => {
@@ -1016,6 +1155,10 @@
         if (!themeMenu.contains(event.target) && !themeMenuButton.contains(event.target)) {
           themeMenu.classList.add("hidden");
           themeMenuButton.setAttribute("aria-expanded", "false");
+        }
+        if (!langMenu.contains(event.target) && !langToggle.contains(event.target)) {
+          langMenu.classList.add("hidden");
+          langToggle.setAttribute("aria-expanded", "false");
         }
       });
 
